@@ -1,0 +1,15 @@
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+###-tns-completion-start-###
+if [ -f ~/.tnsrc ]; then 
+    source ~/.tnsrc 
+fi
+
+###-tns-completion-end-###
+export ANDROID_HOME=/usr/local/share/android-sdk
+export LC_ALL="en_US.UTF-8"
+
+### sonar-scanner for SonarQube
+export PATH=$PATH:/Applications/sonar-scanner/bin

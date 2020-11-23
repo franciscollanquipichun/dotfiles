@@ -1,0 +1,33 @@
+[core]
+	excludesfile = ~/dotfiles/git/.gitignore
+	editor = vim
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge $LOCAL $REMOTE
+[difftool]
+	prompt = false
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
+	keepBackup = false
+[user]
+	name = Francisco Javier Llanquipichun Garcia
+	email = francisco.llanquipichun@gmail.com
+	mail = francisco.llanquipichun@gmail.com
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[color]
+	ui = true
+[alias]
+	nicelog = log --oneline --graph --all
+[commit]
+	template = ~/dotfiles/git/.gitCommitMsg

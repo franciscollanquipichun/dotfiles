@@ -1,0 +1,7 @@
+# Configuration file for configuring user environments. 
+# The users can modify the default settings and add any extra configurations in it.
+
+if [ -s ~/.bashrc ]; then source ~/.bashrc; fi
+
+export LC_ALL="en_US.UTF-8"
+export PATH=$PATH:/Applications/sonar-scanner/bin
