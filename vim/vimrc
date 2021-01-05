@@ -1,1 +1,18 @@
-syntax on
+" Enable syntax highlighting
+filetype on
+syntax on 
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Show line numbers
+set number
+
+" Show Matching Parenthesis
+set showmatch
+
+" make searches case insensitive
+set ignorecase
+
+set hidden
+set history=100
