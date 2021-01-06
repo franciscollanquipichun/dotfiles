@@ -14,7 +14,7 @@ linkspath=$basepath/links         # symbolic links directories
 # update from git repository
 echo " Update files from source"
 cd $basepath
-git pull origin master
+git pull origin master --no-rebase
 echo " `tput setaf 2`done`tput sgr0`"
 
 
@@ -46,7 +46,7 @@ echo " `tput setaf 2`done`tput sgr0`"
 # Install Homebrew
 if test ! $(which brew)
 then
-  echo "  Installing Homebrew"
+  echo " Installing Homebrew"
 
   # Install the correct homebrew for each OS type
   if test "$(uname)" = "Darwin"
@@ -61,7 +61,7 @@ fi
 
 
 # Update homebrew
-echo "  Updating Homebrew and formulae"
+echo " Updating Homebrew and formulae"
     brew update
     brew upgrade
     brew cleanup
