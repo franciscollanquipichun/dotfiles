@@ -1,6 +1,60 @@
-*~
+# OS generated files
 .DS_Store
-._NevStokes
-._Coords
-._OSRef.php
+.AppleDouble
+.LSOverride
+ehthumbs.db
+Icon
+Thumbs.db
+
+# Thumbnails
+._*
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# logs
+*.log
+
+# PhpStorm
 .idea
+
+# PHPUnit
+# Reference: https://phpunit.de/
+/app/phpunit.xml
+/phpunit.xml
+
+# Generated files
+.phpunit.result.cache
+
+# Build data
+/build/
+
+# SonarQube
+# https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+# Sonar Scanner working directories
+.sonar/
+.scannerwork/
+
+# http://www.sonarlint.org/commandline/
+# SonarLint working directories, configuration files (including credentials)
+.sonarlint/

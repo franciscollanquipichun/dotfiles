@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/dotfiles/git/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
 [diff]
 	tool = diffmerge
@@ -14,9 +14,8 @@
 	trustExitCode = true
 	keepBackup = false
 [user]
-	name = Francisco Javier Llanquipichun Garcia
+	name = Francisco Llanquipichun
 	email = francisco.llanquipichun@gmail.com
-	mail = francisco.llanquipichun@gmail.com
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -30,4 +29,6 @@
 [alias]
 	nicelog = log --oneline --graph --all
 [commit]
-	template = ~/dotfiles/git/.gitCommitMsg
+	template = ~/.gitCommitMsg
+[pull]
+	ff = only
