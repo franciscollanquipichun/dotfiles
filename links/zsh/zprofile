@@ -10,6 +10,3 @@ fi
 ###-tns-completion-end-###
 export ANDROID_HOME=/usr/local/share/android-sdk
 export LC_ALL="en_US.UTF-8"
-
-### sonar-scanner for SonarQube
-export PATH=$PATH:/Applications/sonar-scanner/bin
