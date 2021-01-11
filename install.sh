@@ -84,18 +84,19 @@ fi
 
 # Install JetBrainsMono Font
 if test "$(uname)" = "Darwin"
+then
+  if test ! -f ~/Library/Fonts/JetBrainsMono-Regular.ttf
   then
-    if test ! -f ~/Library/Fonts/JetBrainsMono-Regular.ttf
-      echo " Installing JetBrains Mono"
-      brew tap homebrew/cask-fonts
-      brew install --cask font-jetbrains-mono
-    fi  
-  elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+    echo " Installing JetBrains Mono"
+    brew tap homebrew/cask-fonts
+    brew install --cask font-jetbrains-mono
+  fi  
+elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+then
+  if test ! -f ~/.local/share/fonts/fonts/ttf/JetBrainsMono-Regular.ttf
   then
-    if test ! -f ~/.local/share/fonts/fonts/ttf/JetBrainsMono-Regular.ttf
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
-    echo " `tput setaf 2`done`tput sgr0`"
-    fi
-  fi
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
   echo " `tput setaf 2`done`tput sgr0`"
+  fi
 fi
+echo " `tput setaf 2`done`tput sgr0`"
