@@ -3,12 +3,12 @@
 Clone this repository in your home `~/` directory:
 
 ```bash
-git clone https://github.com/franciscollanquipichun/dotfiles.git ~/.dotfiles
+git clone https://github.com/franciscollanquipichun/dotfiles.git ~/dotfiles
 ```
 
-run the installation file:
+Run the installation file:
 
 ```bash
-cd ~/.dotfiles
+cd ~/dotfiles
 ./install.sh
 ```

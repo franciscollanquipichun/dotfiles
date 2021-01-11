@@ -43,10 +43,10 @@ done
 echo " `tput setaf 2`done`tput sgr0`"
 
 
-# Install Homebrew
+# Install Homebrew 🍺
 if test ! $(which brew)
 then
-  echo " Installing Homebrew"
+  echo " Installing 🍺 Homebrew"
 
   # Install the correct homebrew for each OS type
   if test "$(uname)" = "Darwin"
@@ -59,11 +59,43 @@ then
   echo " `tput setaf 2`done`tput sgr0`"
 fi
 
-
 # Update homebrew
-echo " Updating Homebrew and formulae"
+echo " Updating 🍺 Homebrew and formulae"
     brew update
     brew upgrade
     brew cleanup
 
 echo " `tput setaf 2`done`tput sgr0`"
+
+# Install Oh My ZSH!
+if test ! -d ~/.oh-my-zsh
+then
+  echo " Installing Oh My ZSH!"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  echo " `tput setaf 2`done`tput sgr0`"
+fi
+
+if test ! -d /usr/local/opt/powerlevel10k
+then
+  echo " Installing powerlevel10k"
+  brew install romkatv/powerlevel10k/powerlevel10k
+  echo " `tput setaf 2`done`tput sgr0`"
+fi
+
+# Install JetBrainsMono Font
+if test "$(uname)" = "Darwin"
+  then
+    if test ! -f ~/Library/Fonts/JetBrainsMono-Regular.ttf
+      echo " Installing JetBrains Mono"
+      brew tap homebrew/cask-fonts
+      brew install --cask font-jetbrains-mono
+    fi  
+  elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+  then
+    if test ! -f ~/.local/share/fonts/fonts/ttf/JetBrainsMono-Regular.ttf
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+    echo " `tput setaf 2`done`tput sgr0`"
+    fi
+  fi
+  echo " `tput setaf 2`done`tput sgr0`"
+fi
