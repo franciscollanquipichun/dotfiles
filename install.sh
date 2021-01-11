@@ -75,10 +75,11 @@ then
   echo " `tput setaf 2`done`tput sgr0`"
 fi
 
-if test ! -d /usr/local/opt/powerlevel10k
+# Install powerlevel10k
+if test ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 then
   echo " Installing powerlevel10k"
-  brew install romkatv/powerlevel10k/powerlevel10k
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   echo " `tput setaf 2`done`tput sgr0`"
 fi
 
@@ -90,6 +91,7 @@ then
     echo " Installing JetBrains Mono"
     brew tap homebrew/cask-fonts
     brew install --cask font-jetbrains-mono
+    echo " `tput setaf 2`done`tput sgr0`"
   fi  
 elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
 then
@@ -99,4 +101,3 @@ then
   echo " `tput setaf 2`done`tput sgr0`"
   fi
 fi
-echo " `tput setaf 2`done`tput sgr0`"
