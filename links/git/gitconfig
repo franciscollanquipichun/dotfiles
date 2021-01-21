@@ -1,6 +1,8 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
+[init]
+	defaultBranch = main
 [diff]
 	tool = diffmerge
 [difftool "diffmerge"]
