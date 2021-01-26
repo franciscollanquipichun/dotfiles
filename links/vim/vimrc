@@ -1,12 +1,22 @@
 " Enable syntax highlighting
 filetype on
-syntax on 
+syntax on
 
+" Encoding
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set ttyfast
 
-" Show line numbers
+" show line numbers
+set ruler
 set number
+set rnu
+
+set gcr=a:blinkon0
+set nolist
+set wrap
 
 " Show Matching Parenthesis
 set showmatch
@@ -14,5 +24,10 @@ set showmatch
 " make searches case insensitive
 set ignorecase
 
+" Enable hidden buffers
 set hidden
 set history=100
+
+"" Status bar
+set laststatus=2
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
