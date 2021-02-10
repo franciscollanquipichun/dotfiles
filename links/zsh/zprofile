@@ -1,3 +1,5 @@
+# show uptime
+echo "Uptime: $(uptime)"
 
 # NVM
 # Manage multiple Node.js versions.
