@@ -10,43 +10,61 @@ basepath=~/dotfiles               # dotfiles directory
 olddir=~/.dotfiles_bkp            # old dotfiles backup directory
 linkspath=$basepath/links         # symbolic links directories
 
+red=`tput setaf 1`
+green=`tput setaf 2`
+yellow=`tput setaf 3`
+blue=`tput setaf 4`
+bold=`tput bold`
+nc=`tput sgr0` # No color
 
 # update from git repository
-echo " Update files from source"
+echo "${bold}Update files from source${nc}"
 cd $basepath
 git pull origin master --no-rebase
-echo " `tput setaf 2`done`tput sgr0`"
-
 
 # create dotfiles_old in homedir
-echo " Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo " `tput setaf 2`done`tput sgr0`"
+if [[ ! -d "$olddir" ]]
+then
+    echo "${bold}Creating ${blue}$olddir${bold} for backup of any existing dotfiles in ${blue}~${nc}"
+    output=$(mkdir -p $olddir 2>&1)
+    if [ -n "$output" ]; then
+        echo "${yellow}${output}${nc}"
+    fi
+fi
 
 
 # change to the dotfiles directory
-echo " Changing to the symbolic links directory: $linkspath"
+echo "${bold}Changing to the symbolic links directory: ${blue}$linkspath${nc}"
 cd $linkspath
-echo " `tput setaf 2`done`tput sgr0`"
+
 
 # Create symlinks
+echo "${bold}Creating symlinks${nc}"
+echo "·"
 for dir in `ls -d */ | cut -f1 -d'/'`; do
     cd $dir
+    echo "├── $dir"
     for file in `ls`; do
-        echo " Creating file backup: `tput bold`~/.$file >> $olddir`tput sgr0`"
-        mv ~/.$file $olddir/
-        echo " Creating symlink: `tput bold`~/.$file -> $linkspath/$dir/$file`tput sgr0`"
-        ln -s $linkspath/$dir/$file ~/.$file
+        echo "│   ├── $file"
+        echo "│   │    > Creating file backup: ${blue}~/.$file >> $olddir${nc}"
+        output=$(mv ~/.$file $olddir/ 2>&1)
+        if [ -n "$output" ]; then
+            echo "│   │      ${yellow}${output}${nc}"
+        fi
+        echo "│   │    > Creating symlink: ${blue}~/.$file -> $linkspath/$dir/$file${nc}"
+        output=$(ln -s $linkspath/$dir/$file ~/.$file 2>&1)
+        if [ -n "$output" ]; then
+            echo "│   │      ${yellow}${output}${nc}"
+        fi
     done
     cd $linkspath
 done
-echo " `tput setaf 2`done`tput sgr0`"
 
 
 # Install Homebrew 🍺
 if test ! $(which brew)
 then
-  echo " Installing 🍺 Homebrew"
+  echo "${bold}Installing 🍺 Homebrew${nc}"
 
   # Install the correct homebrew for each OS type
   if test "$(uname)" = "Darwin"
@@ -56,31 +74,29 @@ then
   then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   fi
-  echo " `tput setaf 2`done`tput sgr0`"
+  echo " ${green}done${nc}"
 fi
 
 # Update homebrew
-echo " Updating 🍺 Homebrew and formulae"
-    brew update
-    brew upgrade
-    brew cleanup
-
-echo " `tput setaf 2`done`tput sgr0`"
+echo "${bold}Updating 🍺 Homebrew and formulae${nc}"
+brew update
+brew upgrade
+brew cleanup
 
 # Install Oh My ZSH!
 if test ! -d ~/.oh-my-zsh
 then
-  echo " Installing Oh My ZSH!"
+  echo "${bold}Installing Oh My ZSH!${nc}"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  echo " `tput setaf 2`done`tput sgr0`"
+  echo " ${green}done${nc}"
 fi
 
 # Install powerlevel10k
 if test ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 then
-  echo " Installing powerlevel10k"
+  echo "${bold}Installing powerlevel10k${nc}"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-  echo " `tput setaf 2`done`tput sgr0`"
+  echo " ${green}done${nc}"
 fi
 
 # Install JetBrainsMono Font
@@ -88,16 +104,16 @@ if test "$(uname)" = "Darwin"
 then
   if test ! -f ~/Library/Fonts/JetBrainsMono-Regular.ttf
   then
-    echo " Installing JetBrains Mono"
+    echo "${bold}Installing JetBrains Mono${nc}"
     brew tap homebrew/cask-fonts
     brew install --cask font-jetbrains-mono
-    echo " `tput setaf 2`done`tput sgr0`"
+    echo " ${green}done${nc}"
   fi  
 elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
 then
   if test ! -f ~/.local/share/fonts/fonts/ttf/JetBrainsMono-Regular.ttf
   then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
-  echo " `tput setaf 2`done`tput sgr0`"
+  echo " ${green}done${nc}"
   fi
 fi
