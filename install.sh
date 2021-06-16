@@ -20,7 +20,7 @@ nc=`tput sgr0` # No color
 # update from git repository
 echo "${bold}Update files from source${nc}"
 cd $basepath
-git pull origin master --no-rebase
+git pull origin main --no-rebase
 
 # create dotfiles_old in homedir
 if [[ ! -d "$olddir" ]]
