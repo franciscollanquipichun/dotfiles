@@ -1,6 +1,7 @@
 " Enable syntax highlighting
 filetype on
 syntax on
+set background=dark
 
 " Encoding
 " Set utf8 as standard encoding and en_US as the standard language
@@ -28,6 +29,6 @@ set ignorecase
 set hidden
 set history=100
 
-"" Status bar
+" Status bar
 set laststatus=2
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
