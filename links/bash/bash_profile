@@ -5,3 +5,7 @@ if [ -s ~/.bashrc ]; then source ~/.bashrc; fi
 
 export LC_ALL="en_US.UTF-8"
 export PATH=$PATH:/Applications/sonar-scanner/bin
+
+# composer
+# PHP dependency manager
+export PATH="$HOME/.composer/vendor/bin:$PATH"

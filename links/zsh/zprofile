@@ -31,3 +31,7 @@ fi
 ###-tns-completion-end-###
 export ANDROID_HOME=/usr/local/share/android-sdk
 export LC_ALL="en_US.UTF-8"
+
+# composer
+# PHP dependency manager
+export PATH="$HOME/.composer/vendor/bin:$PATH"
